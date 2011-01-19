@@ -28,6 +28,8 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Insert here a nice popup window
+        
         
         // Let's create the XML parser
          XMLReader xmlReader = null;
