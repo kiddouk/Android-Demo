@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 import java.lang.Thread;
 
+
 public class MyActivity extends Activity implements Runnable {
     /** Called when the activity is first created. */
     
@@ -72,7 +73,6 @@ public class MyActivity extends Activity implements Runnable {
         
         setContentView(R.layout.main);
 
-        
         dialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         
         Thread thread = new Thread(this);

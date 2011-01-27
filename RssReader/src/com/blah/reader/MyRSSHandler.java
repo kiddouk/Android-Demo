@@ -44,6 +44,8 @@ public class MyRSSHandler extends DefaultHandler {
 		Log.v(TAG, "Document ended");
 	}
 	
+	
+	
 	public void startElement(String namespaceURI, String localName, String qName, Attributes atts)
 		throws SAXException {
 		//Log.v(TAG, "Element Started: " + localName);
@@ -52,7 +54,8 @@ public class MyRSSHandler extends DefaultHandler {
 		if ( qName.equals("item") ) {
 			Log.v(TAG, "Creating a new Item");
 			this.temp_item = new RSSItem();			
-		} else if (qName.equals("title") || qName.equals("description") || qName.equals("pubDate") || qName.equals("link")) {
+		} else if (qName.equals("title") || qName.equals("description") || qName.equals("category") ||
+				qName.equals("pubDate") || qName.equals("link")) {
 			_resetBuffer();
 			this.shouldDump = true;
 		} else {
@@ -70,7 +73,10 @@ public class MyRSSHandler extends DefaultHandler {
 			this.temp_text = new String();
 
 		} else if ( this.temp_item != null && qName.equals("description") ) {
-			String text = this.temp_text.replaceAll("\\<.*?>","");
+			String text = this.temp_text.replaceAll("<!\\[CDATA\\[","");
+			text = text.replaceAll("\\]\\]>", "");
+			text = text.replaceAll("\\<.*?>","");
+			
 			if ( text.length() > 100 )
 				text = text.substring(0, 100);
 			this.temp_item.setDescription( text );
@@ -78,6 +84,9 @@ public class MyRSSHandler extends DefaultHandler {
 
 		} else if ( this.temp_item != null && qName.equals("pubDate") ) {
 			this.temp_item.setDate( this.temp_text );
+
+		} else if ( this.temp_item != null && qName.equals("category") ) {
+			this.temp_item.addCategory( this.temp_text );
 
 		} else if ( this.temp_item != null && qName.equals("link") ) {
 			this.temp_item.setUrl( this.temp_text );

@@ -1,14 +1,18 @@
 package com.blah.reader;
 
+import java.util.ArrayList;
+import android.util.Log;
+
 public class RSSItem {
 	private String title;
 	private String description;
 	private String date;
 	private String url;
+	private ArrayList<String> categories;
 	
 	
 	public RSSItem() {
-		
+		this.categories = new ArrayList<String>();
 	}
 	
 	public String toString() {
@@ -46,6 +50,15 @@ public class RSSItem {
 
 	public String getDate() {
 		return this.date;
+	}
+	
+	public void addCategory(String category) {
+		Log.v("CAT", "Adding category");
+		this.categories.add(category);
+	}
+	
+	public ArrayList<String> getCategories() {
+		return this.categories;
 	}
 	
 	public void setUrl(String url) {
