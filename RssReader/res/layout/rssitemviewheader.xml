@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    >
+    
+<TextView android:id="@+id/itemHeader"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Header"
+			android:textColor="#999999"
+			android:textSize="11px"
+			android:paddingLeft="0px"
+/>
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<TableRow android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+>
+
+	<ImageView android:id="@+id/rssIcon"
+		android:layout_width="40px"
+		android:layout_height="40px"
+		android:src="@drawable/favicon"
+		android:paddingTop="15px"
+		android:paddingLeft="5px"
+		android:paddingRight="10px"
+		android:layout_weight="0.1"
+	/>
+
+	<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5px"
+    android:gravity="left"
+    android:layout_weight="0.8"
+    >
+    
+		<TextView android:id="@+id/itemCategories"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="categories, as, list"
+			android:textColor="#999999"
+			android:textSize="11px"
+			android:paddingLeft="0px"
+		/>
+
+		<TextView android:id="@+id/itemTitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="categories, as, list"
+			android:textColor="#777777"
+			android:textSize="14px"
+			android:lineSpacingMultiplier="1.0"
+		/>
+	
+	
+		<TextView android:id="@+id/itemDescription"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Description"
+			android:textColor="#999999"
+			android:textSize="13px"
+			android:paddingLeft="0px"
+			android:lines="1"
+		/>
+	
+	</LinearLayout>
+	
+	<ImageView android:id="@+id/itemArrow"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/arrow"
+		android:layout_weight="0.1"
+		android:layout_gravity="right"
+		android:paddingTop="10px"
+
+	/>
+	
+	
+
+</TableRow>
+
+</TableLayout>
+
+</LinearLayout>
