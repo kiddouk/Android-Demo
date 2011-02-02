@@ -2,12 +2,18 @@ package com.blah.reader;
 
 import java.util.ArrayList;
 import android.util.Log;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
 
 public class RSSItem {
 	private String title;
 	private String description;
-	private String date;
+	private Date date;
 	private String url;
+	
+	// categories is a list as a BlogPost can belong
+	// to many categories.
 	private ArrayList<String> categories;
 	
 	
@@ -15,6 +21,8 @@ public class RSSItem {
 		this.categories = new ArrayList<String>();
 	}
 	
+	
+	// A little helper function. Useful for debugging.
 	public String toString() {
 		String str = new String();
 		
@@ -45,10 +53,21 @@ public class RSSItem {
 	}
 
 	public void setDate(String date) {
-		this.date = date;
+		
+		
+		// Let's parse the date string.
+		// SimpleDateFormat can parse according to a pattern.
+		String pattern = "E, dd MMM yyyy";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		try {
+			this.date = format.parse(date);
+		} catch (ParseException e) {
+			Log.v("DateFormat", "ParseException occured");
+		}
+		
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 	
