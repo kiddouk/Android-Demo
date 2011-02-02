@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<TableRow android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+>
+
+	<ImageView android:id="@+id/rssIcon"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:paddingTop="10dp"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:src="@drawable/favicon"
+	/>
+
+
+	<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/cellInfo"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="250dp"
+    android:padding="5px"
+    android:gravity="left"
+    >
+    
+		<TextView android:id="@+id/itemCategories"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="categories, as, list"
+			android:textColor="#999999"
+			android:textSize="11sp"
+			android:paddingLeft="0dp"
+		/>
+
+		<TextView android:id="@+id/itemTitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="This is a very long title. I said long enough."
+			android:textColor="#777777"
+			android:textSize="14sp"
+			android:lineSpacingMultiplier="1.0"
+		/>
+	
+	
+		<TextView android:id="@+id/itemDescription"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Description"
+			android:textColor="#999999"
+			android:textSize="13sp"
+			android:paddingLeft="0dp"
+			android:lines="1"
+		/>
+	
+	</LinearLayout>
+	
+		<ImageView android:id="@+id/itemArrow"
+		android:layout_width="20dp"
+		android:layout_height="30dp"
+		android:paddingTop="10dp"
+		android:src="@drawable/arrow"
+	/>
+	
+	
+
+</TableRow>
+
+</TableLayout>

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class RSSFeed {
-	private String title;
 	private ArrayList<RSSItem> items;
 
 	private static final String TAG = "RSSFEED";
