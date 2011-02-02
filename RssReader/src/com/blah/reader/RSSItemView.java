@@ -31,14 +31,22 @@ public class RSSItemView extends LinearLayout {
 		
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);	
 		
+		
+		// Infate, simply convert your XML file into an Object ( a View ) so you can
+		// use it. Simple and efficient.
+		
 		mView = mInflater.inflate(R.layout.rssitemview, parent, false);
 
+		// Our RSSItemView is a VIEW by itself. Make sure that the inflated view
+		// is part of our object. Otherwise, we will render nothing.
 		this.addView(mView, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 	}
 	
 
 	public void mapData( RSSItem rssItem ) {
+		// We simply get any Widget but its ID. We change
+		// the text according to the content of the RSS Item.
 				
 		String categories = new String();		
 
@@ -66,8 +74,7 @@ public class RSSItemView extends LinearLayout {
 		
 		TextView tvTitle = (TextView) mView.findViewById(R.id.itemTitle);
 
-		Typeface tfFolio = Typeface.createFromAsset(mContext.getAssets(),"Folio Bold BT.ttf");
-		tvTitle.setTypeface(tfFolio);
+		//tvTitle.setTypeface(tfFolio);
 
 		tvTitle.setText( rssItem.getTitle() );
 		

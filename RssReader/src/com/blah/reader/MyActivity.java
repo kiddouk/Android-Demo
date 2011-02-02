@@ -33,11 +33,8 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Insert here a nice popup window
         
         setContentView(R.layout.main);
-
-//        dialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         
     	XMLReader xmlReader = null;
 

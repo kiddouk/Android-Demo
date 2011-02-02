@@ -48,6 +48,12 @@ class RSSItemAdapter extends BaseAdapter {
 		
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
+		// The whole magic of the adaptor happens here !
+		// Don't forget to uncomment ta piece of code
+		// to activate optimization
+		
+		
 		RSSItemView btv;
 		
 		//if (convertView == null) {

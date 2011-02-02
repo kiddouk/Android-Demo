@@ -66,6 +66,10 @@ public class MyRSSHandler extends DefaultHandler {
 	}
 	
 	public void endElement(String namespaceURI, String localName, String qName)
+	
+		// End of element => We have parsed that element !
+		// Time to save the data that we just collected.
+	
 		throws SAXException {
 
 		// Log.v(TAG, "Element ended: " + qName);
@@ -101,7 +105,6 @@ public class MyRSSHandler extends DefaultHandler {
 
 	private void _resetBuffer() {
 		if ( this.temp_text.length() != 0 ) {
-			//Log.v(TAG, "Allocating New Object");
 			this.temp_text = new String();
 		}
 	}

@@ -48,7 +48,10 @@ public class RSSItem {
 	}
 
 	public void setDate(String date) {
-				
+		
+		
+		// Let's parse the date string.
+		// SimpleDateFormat can parse according to a pattern.
 		String pattern = "E, dd MMM yyyy";
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		try {
