@@ -32,18 +32,6 @@ class RSSItemAdapter extends BaseAdapter {
 	public int getCount() {
 		return mItems.size();
 	}
-
-	
-	@Override
-	public int getViewTypeCount() {
-		return 2;
-	}
-	
-	@Override
-	public int getItemViewType(int position){
-		return 0;
-		
-	}
 	
 	@Override
 	public Object getItem(int position) {
@@ -58,49 +46,24 @@ class RSSItemAdapter extends BaseAdapter {
 
 	
 		
-
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		RSSItemView btv;
 		
-		if (convertView == null || ! this.isGoodView( (RSSItemView) convertView, position )) {
+		//if (convertView == null) {
 			
-			btv = new RSSItemView(mContext, mItems.get(position), parent, this.isNewGroup(position) );
+			btv = new RSSItemView(mContext, mItems.get(position), parent );
 			Log.v("DEBUG", "position : " + position );
-			Log.v("DEBUG", "title: " + mItems.get(position).getTitle() );
 						
-		} else {
-			Log.v("DEBUG", "REUSE ! ");
-			btv = ( RSSItemView ) convertView;
-		}
+		//} else {
+		//	Log.v("DEBUG", "REUSE ! ");
+		//	btv = ( RSSItemView ) convertView;
+		//}
 		
 		
 		btv.mapData( mItems.get(position) );
-		
-		
-
-			
-//			String description = mItems.get(position).getDescription();
-//			btv.setDescriptionText(description);
-		
+				
 		return btv;
 	}
 
-	private boolean isGoodView(RSSItemView view, int position) {
-		
-		return this.isNewGroup(position) == view.isHeader();
-		
-	}
-	
-	
-	private boolean isNewGroup(int position) {
-		
-		if (position == 0)
-			return true;
-		
-		Date dateCurrentItem = this.mItems.get(position).getDate();
-		Date datePreviousItem = this.mItems.get(position - 1).getDate();
-
-		return ! dateCurrentItem.equals(datePreviousItem);
-	}
 }

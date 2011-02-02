@@ -27,8 +27,10 @@ public class RssReaderTest extends ActivityInstrumentationTestCase2<MyActivity>{
 		solo.scrollDown();
 		solo.scrollUp();
 
+		
 		// Should get the View out of that click.
 		solo.clickInList(0);
+		
 	 }
 	
 

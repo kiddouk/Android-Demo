@@ -22,50 +22,14 @@ import android.os.Message;
 import java.lang.Thread;
 
 
-public class MyActivity extends Activity implements Runnable {
+public class MyActivity extends Activity {
     /** Called when the activity is first created. */
     
     public static final String TAG = "MyRSSReader - MyActivity";
     private ListView lv;
     ProgressDialog dialog;
     final MyRSSHandler rssHandler = new MyRSSHandler();
-    
-    private Handler handler = new Handler() {
-    	@Override
-    	public void handleMessage(Message msg) {
-    		dialog.dismiss();
-    
-    		            
-            try {
-           	 lv = (ListView) findViewById(R.id.ListView01);
-            
-           	 RSSItemAdapter adapter = new RSSItemAdapter(MyActivity.this, rssHandler.getRSSFeed().getItems() );
-           	 lv.setAdapter( adapter );
-           	 
-           	 lv.setOnItemClickListener(new OnItemClickListener() { 
-           				 @Override 
-           				 public void onItemClick(AdapterView<?> parent, View v, 
-           				 int position, long id) {
-           					 Intent i = new Intent(Intent.ACTION_VIEW);
-           					 String url = rssHandler.getRSSFeed().getItems().get(position).getUrl();
-           					 i.setData( Uri.parse( url ));     				 
-           					 startActivity(i);
-           				 }
-           			 }
-           			 );
-           			 
-              	 
-            } catch (Exception e) {
-   			e.printStackTrace();
-   		}
-            
 
-    		
-
-    	}
-    };
-
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,15 +37,8 @@ public class MyActivity extends Activity implements Runnable {
         
         setContentView(R.layout.main);
 
-        dialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
+//        dialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         
-        Thread thread = new Thread(this);
-        thread.start();
-        
-    }
-    public void run() {
-    	// Let's retrieve the information
-    	Log.v("START", "");
     	XMLReader xmlReader = null;
 
 
@@ -108,9 +65,31 @@ public class MyActivity extends Activity implements Runnable {
     	} catch (Exception e) {
     		Log.v(TAG, "Exception : " + e.getMessage());
     	}
+    	
+        try {
+          	 lv = (ListView) findViewById(R.id.ListView01);
+           
+          	 RSSItemAdapter adapter = new RSSItemAdapter(MyActivity.this, rssHandler.getRSSFeed().getItems() );
+          	 lv.setAdapter( adapter );
+          	 
+          	 //lv.setOnItemClickListener(new OnItemClickListener() { 
+          	//			 @Override 
+          	//			 public void onItemClick(AdapterView<?> parent, View v, 
+          	//			 int position, long id) {
+          	//				 Intent i = new Intent(Intent.ACTION_VIEW);
+          	//				 String url = rssHandler.getRSSFeed().getItems().get(position).getUrl();
+          	//				 i.setData( Uri.parse( url ));     				 
+          	//				 startActivity(i);
+          	//			 }
+          	//		 }
+          	//		 );
+          			 
+             	 
+           } catch (Exception e) {
+  			e.printStackTrace();
+  		}
 
-    	handler.sendEmptyMessage(0);
-
+        
     }
 
 }

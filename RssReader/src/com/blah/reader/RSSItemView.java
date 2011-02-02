@@ -23,23 +23,15 @@ public class RSSItemView extends LinearLayout {
 
 	private LayoutInflater mInflater;
 	private View mView;
-	private boolean _isHeader;
 	private Context mContext;
 	
-	public RSSItemView(Context context, RSSItem rssItem, ViewGroup parent, boolean isHeader) {
+	public RSSItemView(Context context, RSSItem rssItem, ViewGroup parent) {
 		super (context);
-		this._isHeader = isHeader;
 		this.mContext = context;
 		
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);	
 		
-		if (isHeader) {
-			mView = mInflater.inflate(R.layout.rssitemviewheader, parent, false);
-			
-			
-		} else {
-			mView = mInflater.inflate(R.layout.rssitemview, parent, false);
-		}	
+		mView = mInflater.inflate(R.layout.rssitemview, parent, false);
 
 		this.addView(mView, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
@@ -47,26 +39,20 @@ public class RSSItemView extends LinearLayout {
 	
 
 	public void mapData( RSSItem rssItem ) {
-		
-		if (_isHeader) {
-			SimpleDateFormat formater = new SimpleDateFormat("EEE, dd MMM yyyy");
-			TextView tvHeader = ( TextView ) mView.findViewById(R.id.itemHeader);
-			tvHeader.setText( formater.format( rssItem.getDate() ) );
-		}
-		
+				
 		String categories = new String();		
+
 		Iterator it = rssItem.getCategories().iterator();
 		while (it.hasNext()) {
 			categories += it.next() + " ";
 		}
 		
-		
-		Typeface tf_folio = Typeface.createFromAsset(mContext.getAssets(),"Folio Bold BT.ttf");
+		// Place your TTF font in the "res" directory
+		// Typeface tf_folio = Typeface.createFromAsset(mContext.getAssets(),"Folio Bold BT.ttf");
 
 		TextView title = ( TextView ) mView.findViewById(R.id.itemTitle);
 		title.setText( rssItem.getTitle() );
-		title.setTypeface(tf_folio);
-
+		//title.setTypeface(tf_folio);
 		
 		TextView description = ( TextView ) mView.findViewById( R.id.itemDescription );
 		description.setText ( rssItem.getDescription() );
@@ -90,13 +76,7 @@ public class RSSItemView extends LinearLayout {
 		
 
 		this.setOrientation(VERTICAL);
-				
 		
 	}
 	
-	
-	
-	public boolean isHeader() {
-		return this._isHeader;
-	}
 }

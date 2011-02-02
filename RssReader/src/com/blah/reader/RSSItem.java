@@ -48,7 +48,7 @@ public class RSSItem {
 	}
 
 	public void setDate(String date) {
-		
+				
 		String pattern = "E, dd MMM yyyy";
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		try {

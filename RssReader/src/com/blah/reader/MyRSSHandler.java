@@ -54,7 +54,9 @@ public class MyRSSHandler extends DefaultHandler {
 		if ( qName.equals("item") ) {
 			Log.v(TAG, "Creating a new Item");
 			this.temp_item = new RSSItem();			
-		} else if (qName.equals("title") || qName.equals("description") || qName.equals("category") ||
+		}
+		
+		else if (qName.equals("title") || qName.equals("description") || qName.equals("category") ||
 				qName.equals("pubDate") || qName.equals("link")) {
 			_resetBuffer();
 			this.shouldDump = true;
