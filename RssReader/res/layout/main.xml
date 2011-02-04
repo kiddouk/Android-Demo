@@ -2,16 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="#E6E3DE"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/gradient1"
+    >
+    
+    <ImageView android:id="@+id/backButton"
+    	android:layout_width="30dp"
+    	android:layout_height="match_parent"
+    	android:src="@drawable/home"
+    	android:paddingLeft="10dp"
+    />
+   
+    <TextView android:id="@+id/titleHeader"
+    	android:layout_width="wrap_content"
+    	android:layout_height="match_parent"
+    	android:layout_weight="1"
+    	android:text="Title"
+    	android:textColor="#FFFFFF"
+    	android:gravity="center_vertical"
+    	android:textSize="18sp"
+    	android:typeface="sans"
+    	android:paddingLeft="10dp"
+    	android:textStyle="bold"
+    />
 
+    <Button android:id="@+id/refreshButton"
+    	android:layout_width="30dp"
+    	android:layout_height="30dp"
+    	android:background="@drawable/refresh"
+    	android:paddingRight="50dp"
+    	android:layout_gravity="center_vertical"
+    	android:onClick="refreshData"
+    />
+    
+   </LinearLayout>
+    
  <ListView android:id="@+id/ListView01"
 	 android:layout_width="match_parent"
 	 android:layout_height="wrap_content"
 	 android:cacheColorHint="#E6E3DE"
 	 android:divider="#D9D6D1"
 	 android:dividerHeight="1px" />
+    
 
 </LinearLayout>

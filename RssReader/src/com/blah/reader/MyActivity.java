@@ -71,14 +71,25 @@ public class MyActivity extends Activity implements Runnable {
         super.onCreate(savedInstanceState);
         // Insert here a nice popup window
         
-        setContentView(R.layout.main);
+        this.refreshData(null);
+        
+    }
+    
+    
+    public void refreshData(View v) {
+
+    	// View v contains the Button pressed
+    	// but we seriously don't care.
+    	
+    	setContentView(R.layout.main);
 
         dialog = ProgressDialog.show(this, "", "Loading. Please wait...", true);
         
         Thread thread = new Thread(this);
         thread.start();
-        
+    	
     }
+    
     public void run() {
     	// Let's retrieve the information
     	Log.v("START", "");
